@@ -40,7 +40,13 @@ namespace OASIS
 
         public static bool raycast(out RaycastHit hit, float distance, int layerMask)
         {
-            if (!camera) camera = Camera.main;
+            if (!camera)
+            {
+                camera = Camera.main;
+                hit = default;
+                return false;
+            }
+
             if (Time.frameCount != lastFrame)
             {
                 raycasts.Clear();
